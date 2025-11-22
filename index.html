@@ -1,72 +1,98 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>台南景點 StoryMap 主頁</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Noto Serif TC", serif;
+            background-color: #f4e9d8;
+            color: #4a3f35;
+        }
+
+        header {
+            background-color: #d8c3a5;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+        }
+
+        .intro {
+            max-width: 900px;
+            margin: 30px auto;
+            text-align: center;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .storymap-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 10px;
+            border: 3px solid #bfa68b;
+            background-color: #fff8ef;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .storymap-container:hover {
+            transform: scale(1.01);
+        }
+
+        iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+
+        .button-area {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #b8926a;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #8b6b4c;
+        }
+    </style>
 </head>
 <body>
-
-    <!-- Header -->
-    <header class="hero">
-        <div class="overlay"></div>
-        <h1 class="title fade-in">台南景點導覽</h1>
-        <p class="subtitle fade-in">以故事地圖一起探索台南的文化、歷史與美食。</p>
-        <a href="#storymap" class="btn fade-in">開始探索</a>
+    <header>
+        <h1>台南景點 StoryMap 主頁</h1>
     </header>
 
-    <!-- Introduction Section -->
-    <section class="intro fade-section">
-        <h2>關於這個 StoryMap</h2>
+    <section class="intro">
         <p>
-            本頁整合了以 StoryMap 設計的台南景點導覽，從文化古蹟、美食小吃到人氣景點，
-            以視覺化方式呈現台南的魅力。透過下方互動式地圖，跟著路線走訪台南的每一個故事。
+            歡迎來到台南景點互動地圖！本頁以復古風格呈現，讓你以更沉浸的方式探索台南的文化、歷史與城市風景。<br>
+            下方呈現的是由 StoryMapJS 製作的互動式地圖，滑動即可瀏覽各景點介紹。
         </p>
     </section>
 
-    <!-- StoryMap Embed Section -->
-    <section id="storymap" class="storymap-container fade-section">
-        <h2>互動地圖｜台南景點 StoryMap</h2>
-        
-        <!-- 按鈕切換高度 -->
-        <div class="height-switch">
-            <button onclick="setMapHeight(600)">小</button>
-            <button onclick="setMapHeight(800)">中</button>
-            <button onclick="setMapHeight(1000)">大</button>
-        </div>
-
-        <iframe 
-            id="storymapFrame"
-            src="https://uploads.knightlab.com/storymapjs/bf4c54e3623bb110f550cbf76b241aa7/ikea/index.html"
-            frameborder="0"
-            width="100%"
-            height="800">
-        </iframe>
+    <section class="storymap-container">
+        <iframe src="https://uploads.knightlab.com/storymapjs/bf4c54e3623bb110f550cbf76b241aa7/ikea/index.html"></iframe>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2025 台南景點 StoryMap｜由你設計的主頁呈現</p>
-    </footer>
-
-    <script>
-        // 捲動淡入效果
-        const fadeSections = document.querySelectorAll('.fade-section');
-        window.addEventListener('scroll', () => {
-            fadeSections.forEach(sec => {
-                const rect = sec.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
-                    sec.classList.add('visible');
-                }
-            });
-        });
-
-        // 地圖高度切換
-        function setMapHeight(h) {
-            document.getElementById('storymapFrame').style.height = h + "px";
-        }
-    </script>
-
+    <div class="button-area">
+        <a href="#top" class="btn">回到頂部</a>
+    </div>
 </body>
 </html>
